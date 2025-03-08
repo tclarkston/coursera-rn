@@ -10,7 +10,8 @@ function App() {
   return (
     <>
       <div>
-        <Heading />
+        <Heading firstName="Bob" />
+        <Heading firstName="Todd" />
         <img src={reactLogo} alt="react logo" className="logo" />
         <img src={viteLogo} alt="vite logo" className="logo" />
         <button onClick={() => setCount((count) => count + 1)}>
