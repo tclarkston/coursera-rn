@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-function LittleLemonFooter() {
+export default function LittleLemonFooter() {
   return (
     <View style={styles.container}>
       <Text style={styles.footerText}>
@@ -10,8 +10,6 @@ function LittleLemonFooter() {
     </View>
   );
 }
-
-export default LittleLemonFooter;
 
 const styles = StyleSheet.create({
   container: {
