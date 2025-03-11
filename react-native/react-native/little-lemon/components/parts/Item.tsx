@@ -1,7 +1,12 @@
 import { View, Text, StyleSheet } from "react-native";
 
 
-const Item = ({ name, price }) => (
+interface ItemProps {
+  name: string;
+  price: number;
+}
+
+const Item = ({ name, price }: ItemProps) => (
   <View style={menuStyles.innerContainer}>
     <Text style={menuStyles.itemText}>{name}</Text>
     <Text style={menuStyles.idText}>{price}</Text>

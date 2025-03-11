@@ -22,7 +22,7 @@ export default function WelcomeScreen() {
         <Image
           style={styles.image}
           source={require('@/assets/images/logo.png')}
-          resizeMode=""
+          resizeMode="contain"
           accessible={true}
           accessibilityLabel={'Little Lemon Logo'}
         />
@@ -34,7 +34,6 @@ export default function WelcomeScreen() {
               ? { color: '#333333' }
               : { color: '#EDEFEE' },
           ]}>
-          Little Lemon
         </Text>
       </View>
       <Text
@@ -64,7 +63,7 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   headerText: {
-    
+
     paddingRight: 10,
     paddingLeft: 20,
     paddingTop: 30,
@@ -74,7 +73,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   regularText: {
-    
+
     fontSize: 24,
     padding: 20,
     marginVertical: 8,
