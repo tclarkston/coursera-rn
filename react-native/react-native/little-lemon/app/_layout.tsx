@@ -1,60 +1,35 @@
-import { useFonts } from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
-import { Ionicons } from '@expo/vector-icons';
-import { useColorScheme } from '@/hooks/useColorScheme';
-import WelcomeScreen from '@/components/screens/WelcomeScreen';
+import * as React from 'react';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import LoginScreen from '@/components/screens/LoginScreen';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import WelcomeScreen from '@/components/screens/WelcomeScreen';
+import { StyleSheet, View } from 'react-native';
+import LittleLemonHeader from '@/components/sections/LittleLemonHeader';
+import LittleLemonFooter from '@/components/sections/LittleLemonFooter';
 
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
+const Drawer = createDrawerNavigator();
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
-
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
-
-  if (!loaded) {
-    return null;
-  }
-  const Tabs = createBottomTabNavigator();
-
   return (
-
-    <Tabs.Navigator
-      initialRouteName="Login"
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ focused, color, size }) => {
-          let iconName: keyof typeof Ionicons.glyphMap;
-
-          if (route.name === 'Welcome') {
-            iconName = focused
-              ? 'information-circle'
-              : 'information-circle-outline';
-          } else if (route.name === 'Login') {
-            iconName = focused ? 'log-in' : 'log-in-outline';
-          } else {
-            iconName = 'information-circle'; // default icon name
-          }
-
-          // You can return any component that you like here!
-          return <Ionicons name={iconName} size={size} color={color} />;
-        },
-        tabBarActiveTintColor: 'tomato',
-        tabBarInactiveTintColor: 'gray',
-      })}
-    >
-      <Tabs.Screen name="Welcome" component={WelcomeScreen} />
-      <Tabs.Screen name="Login" component={LoginScreen} />
-    </Tabs.Navigator>
+    <>
+      <View style={styles.container}>
+        <LittleLemonHeader />
+        <Drawer.Navigator initialRouteName="Login">
+          <Drawer.Screen name="Welcome" component={WelcomeScreen} />
+          <Drawer.Screen name="Login" component={LoginScreen} />
+        </Drawer.Navigator>
+      </View>
+      <View style={styles.footerContainer}>
+        <LittleLemonFooter />
+      </View>
+    </>
   );
 }
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#333333',
+  },
+  footerContainer: { backgroundColor: '#333333' },
+});
