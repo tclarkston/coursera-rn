@@ -8,7 +8,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 
-export default App = () => {
+const App = () => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
@@ -56,6 +56,8 @@ export default App = () => {
       </SafeAreaView>
   );
 };
+
+export default App;
 
 const menuStyles = StyleSheet.create({
   container: {
