@@ -5,7 +5,6 @@ export interface LittleLemonHeaderProps {
   headerText: string;
 };
 
-
 const LittleLemonHeader = ({ headerText }: LittleLemonHeaderProps) => {
   return (
     <View style={styles.container}>

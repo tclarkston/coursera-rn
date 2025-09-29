@@ -46,7 +46,7 @@ const menuItemsToDisplay = [
   },
 ];
 
-const Item = ({ name, price }) => (
+const Item = ({ name, price }: { name: string; price: string }) => (
   <View style={menuStyles.innerContainer}>
     <Text style={menuStyles.itemText}>{name}</Text>
     <Text style={menuStyles.itemText}>{price}</Text>
@@ -54,9 +54,9 @@ const Item = ({ name, price }) => (
 );
 
 const MenuItems = () => {
-  const renderItem = ({ item }) => <Item name={item.name} price={item.price} />;
+  const renderItem = ({ item }: { item: { name: string; price: string } }) => <Item name={item.name} price={item.price} />;
 
-  const renderSectionHeader = ({ section: { title } }) => (
+  const renderSectionHeader = ({ section: { title } }: { section: { title: string } }) => (
     <View style={menuStyles.headerStyle}>
       <Text style={menuStyles.sectionHeader}>{title}</Text>
     </View>
@@ -66,7 +66,7 @@ const MenuItems = () => {
     <View style={menuStyles.container}>
       <SectionList
         sections={menuItemsToDisplay}
-        keyExtractor={(item, index) => item + index}
+        keyExtractor={(item, index) => item.name + index}
         renderItem={renderItem}
         renderSectionHeader={renderSectionHeader}
       ></SectionList>
